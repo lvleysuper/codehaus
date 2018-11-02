@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 
 
-def create_digraph_from(adjacent_table):
+def create_digraph_from_adjacent_table(adjacent_table):
     """
     :param adjacent_table: 邻接表， |V|+|E|， 定点数 + 边数
         邻接表： 前V项按顺序对应着节点，每一项取值为数组下标，表示以该节点为初始节点的边的连链表以此开始
@@ -53,5 +53,5 @@ def check_vertex(v, threshold):
 
 
 if __name__ == "__main__":
-    create_digraph_from([6, 7, 8, 12, 13, 4, 1, 1, 2, 4, 5, 5, 2])
-    create_digraph_from([5, 7, 8, 9, 2, 3, 3, 4, 1, 2])
+    create_digraph_from_adjacent_table([6, 7, 8, 12, 13, 4, 1, 1, 2, 4, 5, 5, 2])
+    create_digraph_from_adjacent_table([5, 7, 8, 9, 2, 3, 3, 4, 1, 2])
