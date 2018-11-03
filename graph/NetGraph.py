@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 
 
-def create_digraph_from_adjacent_table(adjacent_table):
+def create_graph_from_adjacent_table(adjacent_table, is_digraph = True):
     """
     :param adjacent_table: 邻接表， |V|+|E|， 定点数 + 边数
         邻接表： 前V项按顺序对应着节点，每一项取值为数组下标，表示以该节点为初始节点的边的连链表以此开始
@@ -25,7 +25,10 @@ def create_digraph_from_adjacent_table(adjacent_table):
     if not check_vertex(adjacent_table[vertex_num:], vertex_num):
         raise ValueError("Invalid vertex number")
     # 构造图
-    graph = nx.DiGraph()
+    if is_digraph:
+        graph = nx.DiGraph()
+    else:
+        graph = nx.Graph()
     # 添加顶点
     vertexs = [i+1 for i in range(vertex_num)]
     graph.add_nodes_from(vertexs)
@@ -39,9 +42,7 @@ def create_digraph_from_adjacent_table(adjacent_table):
         pos = adjacent_table[i] - 1
         for j in range(pos, pos + distance[i]):
             graph.add_edge(i+1, adjacent_table[j])
-
-    nx.draw(graph, with_labels=True, font_weight='bold')
-    plt.show()
+    return graph
 
 
 def check_vertex(v, threshold):
@@ -53,5 +54,11 @@ def check_vertex(v, threshold):
 
 
 if __name__ == "__main__":
-    create_digraph_from_adjacent_table([6, 7, 8, 12, 13, 4, 1, 1, 2, 4, 5, 5, 2])
-    create_digraph_from_adjacent_table([5, 7, 8, 9, 2, 3, 3, 4, 1, 2])
+    graph = create_graph_from_adjacent_table([6, 7, 8, 12, 13, 4, 1, 1, 2, 4, 5, 5, 2], is_digraph=True)
+    nx.draw(graph, with_labels=True, font_weight='bold')
+    plt.show()
+
+    graph = create_graph_from_adjacent_table([5, 7, 8, 9, 2, 3, 3, 4, 1, 2], is_digraph=False)
+    nx.draw(graph, with_labels=True, font_weight='bold')
+    plt.show()
+
