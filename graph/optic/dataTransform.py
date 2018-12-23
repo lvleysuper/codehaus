@@ -55,6 +55,7 @@ def match_site_neid():
             ne_info = NODE_TO_SITE[key]
             # 匹配逻辑待确认， site匹配多个node_id如何处理？
             print("match site: {}, node id: {}" % (ne_info["site"], value["NODE_ID"]))
+            replace_site_to_node_id(ne_info["site"], value["NODE_ID"])
         else:
             raise ValueError("node name {} unmatched" % key)
 
@@ -66,3 +67,4 @@ def replace_site_to_node_id(site_name, node_id):
 if __name__ == "__main__":
     read_ne_site_info("test.xlsx")
     read_ne_id_info("ne.csv")
+    match_site_neid()
