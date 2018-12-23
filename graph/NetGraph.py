@@ -53,12 +53,19 @@ def check_vertex(v, threshold):
     return True
 
 
-if __name__ == "__main__":
-    graph = create_graph_from_adjacent_table([6, 7, 8, 12, 13, 4, 1, 1, 2, 4, 5, 5, 2], is_digraph=True)
-    nx.draw(graph, with_labels=True, font_weight='bold')
-    plt.show()
+def create_graph_from_adjacent_matrix(adjacent_matrix, is_digraph=True):
+    pass
 
-    graph = create_graph_from_adjacent_table([5, 7, 8, 9, 2, 3, 3, 4, 1, 2], is_digraph=False)
+
+if __name__ == "__main__":
+    # 常用经典图
+    # graph = nx.petersen_graph()
+    # graph = nx.tutte_graph()
+    # graph = nx.sedgewick_maze_graph()
+    # graph = nx.tetrahedral_graph()
+    # 全连接图
+    # graph = nx.complete_graph(6)
+    # graph = nx.complete_bipartite_graph(3, 5)
     nx.draw(graph, with_labels=True, font_weight='bold')
     plt.show()
 

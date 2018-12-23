@@ -49,6 +49,20 @@ def read_ne_id_info(ne_file="ne.csv"):
     print(NODE_TO_NEID)
 
 
+def match_site_neid():
+    for key, value in NODE_TO_NEID.items():
+        if key in NODE_TO_SITE:
+            ne_info = NODE_TO_SITE[key]
+            # 匹配逻辑待确认， site匹配多个node_id如何处理？
+            print("match site: {}, node id: {}" % (ne_info["site"], value["NODE_ID"]))
+        else:
+            raise ValueError("node name {} unmatched" % key)
+
+
+def replace_site_to_node_id(site_name, node_id):
+    pass
+
+
 if __name__ == "__main__":
     read_ne_site_info("test.xlsx")
     read_ne_id_info("ne.csv")
