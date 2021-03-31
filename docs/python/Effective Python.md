@@ -37,5 +37,21 @@
     * 难理解，break退出不调用；某些场景可以简化flag遍历使用，但通常也可用辅助函数完成
 13. 合理使用try/except/else/finally每个代码块
     * else: try异常没发生会执行，可以将容易异常的部分放到try中，else中放后续执行代码，减少try中代码量
+    * finally资源清理，避免在finally中使用break或return
 
+**总结**：
 
+* 了解python版本
+* 了解pythonic特性：bytes、str、slice、列表推导、enumerate、for/else、try/except/else/finally
+* 可读性：PEP8规范、辅助函数取代复杂表达式、避免map/filter使用、避免多级列表推导
+
+## 函数
+
+1. 尽量使用异常表示特殊情况，而不是返回None
+    * not 空列表、false、0和not None都返回true, 无法准确区分None和其他几种场景
+2. 了解闭包中访问外围作用域中变量
+    * LEGB
+    * nonlocal, python2使用可变对象
+3. 考虑使用生成器改写直接返回列表的函数
+    * 内存，类似Python中第9条"用生成器表达式改写数据量较大的列表推导", 当前场景在函数中，使用yield
+4. 注意默认值得可变参数
